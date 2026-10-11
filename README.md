@@ -52,6 +52,10 @@ npm run dev
 
 Open http://localhost:3000, create an account, name your business. Tick **“Also create a separate demo business”** to explore realistic sample data (it lives in its own business, never mixed with yours). The embedded database is stored in `./.data/pglite` and migrated automatically.
 
+## Try it online: GitHub Codespaces
+
+Click **Code → Codespaces → Create codespace on main** in GitHub. The container installs dependencies, creates a local `.env.local` with a fresh secret, and starts the app on port 3000. Open the **Ports** tab (or the pop-up) to reach your private `https://…-3000.app.github.dev` address, then sign up and tick “create a demo business”. Data lives in the Codespace's embedded database. Stop the Codespace when finished to save your free monthly hours.
+
 ## Deploy: Supabase + Vercel
 
 1. **Create a Supabase project** (EU region recommended, e.g. Paris `eu-west-3`).
