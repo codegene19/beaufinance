@@ -33,6 +33,11 @@ describe('demo dataset', () => {
     const dsh = await as(user, biz, (tx) => dashboard(tx, { from: '2026-07-12', to: '2026-10-10', bucket: 'week' }));
     expect(dsh.series.length).toBeGreaterThan(5);
     expect(dsh.kpis.cash.known).toBe(true);
-    require('node:fs').writeFileSync('/tmp/claude-501/demo-out.json', JSON.stringify({ net: dsh.kpis.netSales, gp: dsh.kpis.grossProfit, profitAfterAds: dsh.kpis.profitAfterAds, nop: dsh.kpis.netOperatingProfit, cash: dsh.kpis.cash.balance, inv: dsh.kpis.inventoryValue, reorder: dsh.inventory.map((r) => `${r.sku}:${r.status}:${r.available}`) }));
+    expect(dsh.kpis.netSales.greaterThan(0)).toBe(true);
+    expect(dsh.kpis.inventoryValue.greaterThan(0)).toBe(true);
+    // the demo is designed to show a mix of reorder decisions
+    const statuses = new Set(dsh.inventory.map((r) => r.status));
+    expect(statuses.has('healthy')).toBe(true);
+    expect(statuses.size).toBeGreaterThan(1);
   });
 });
