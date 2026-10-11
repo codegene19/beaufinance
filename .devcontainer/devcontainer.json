@@ -1,15 +1,37 @@
 {
   "name": "BeauFinance",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
-  "hostRequirements": { "cpus": 2, "memory": "4gb" },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
   "postCreateCommand": "npm ci && bash .devcontainer/setup-env.sh",
   "postStartCommand": "bash .devcontainer/start.sh",
-  "forwardPorts": [3000],
+  "forwardPorts": [
+    3000
+  ],
   "portsAttributes": {
-    "3000": { "label": "BeauFinance app", "onAutoForward": "openBrowser" }
+    "3000": {
+      "label": "BeauFinance app",
+      "onAutoForward": "openBrowser"
+    }
   },
   "customizations": {
-    "codespaces": { "openFiles": ["README.md"] },
-    "vscode": { "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"] }
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
   }
 }
